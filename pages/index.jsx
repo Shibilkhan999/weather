@@ -7,24 +7,26 @@ const Home = () => {
   const [cityName, setCityName] = useState("");
   const [isDarkMode, setIsDarkMode] = useState(true);
 
-  useEffect(() => {
-    axios
-      .get('http://localhost:5001/get-weather')
-      .then((res) => {
-        console.log(res.data);
-        setWeather(res.data);
-      })
-      .catch((err) => {
-        console.log("Error", err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:5001/get-weather')
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setWeather(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Error", err);
+  //     });
+  // }, []);
+
+   let baseUrl = "https://weather-apps-kbvp.vercel.app"
 
   const getWeather = (e) => {
     e.preventDefault();
     if (!cityName.trim()) return;
     
     axios
-      .get(`http://localhost:5001/get-weather/${cityName}`)
+      .get(`${baseUrl}/get-weather/${cityName}`)
       .then((res) => {
         console.log(res.data);
         setWeather(res.data);
